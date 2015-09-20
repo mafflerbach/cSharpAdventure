@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace WpfApplication1.Gw
 {
-    public class ItemList
+    class ItemList
     {
-        public string Title { get; set; }
-        public string Image { get; set; }
+        public string max_offer_unit_price { get; set; }
+        public string min_sale_unit_price { get; set; }
+        public string restriction_level { get; set; }
+        public string sale_availability { get; set; }
+        public byte[] Image { get; set; }
+        public string Rarity { get; set; }
+        public string Title { get; set; }   
 
     }
-
 }

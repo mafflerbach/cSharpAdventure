@@ -8,17 +8,38 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
 
-        <ListBox Name="ListBox" Initialized="ListBox_OnInitialized" Margin="-30,0,30,0">
+        <ListBox Name="ListBox" Initialized="ListBox_OnInitialized" Margin="0,35,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding Image}" Width="25"/>
+                            <Image Source="{Binding Image}" Width="100"/>
+
                             <TextBlock VerticalAlignment="Center" Text="{Binding Title}"></TextBlock>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}"></TextBlock>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}"></TextBlock>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}"></TextBlock>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}"></TextBlock>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}"></TextBlock>
                         </StackPanel>
                     </ListBoxItem>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+
         </ListBox>
+        <TextBox  Width="180"  VerticalAlignment="top" HorizontalAlignment="Left" x:Name="SearchTermTextBox" Margin="10,8,0,291" Height="20"/>
+        <TextBlock IsHitTestVisible="False" Text="Enter Search Term Here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="16,8,0,291" Foreground="DarkGray" Height="20">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="195,8,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
     </Grid>
 </Window>
