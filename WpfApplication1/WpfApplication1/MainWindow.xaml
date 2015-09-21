@@ -8,7 +8,7 @@
         Title="MainWindow" Height="522" Width="834">
     <Grid Margin="0,10,0,0">
 
-        <ListBox Name="ListBox" Initialized="ListBox_OnInitialized" Margin="0,40,0,35">
+        <ListBox Name="ListBox" Initialized="ListBox_OnInitialized" Loaded="ListBox_OnLoaded" Margin="0,40,0,35">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <ListBoxItem>
