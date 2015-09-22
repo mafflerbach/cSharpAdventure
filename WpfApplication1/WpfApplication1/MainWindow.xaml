@@ -14,13 +14,15 @@
           <ListBoxItem>
             <StackPanel Orientation="Horizontal">
               <Image Source="{Binding Image}" Width="100" />
-
+              <TextBlock>
               <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
               <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
-              <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" />
-              <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" />
-              <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" />
-              <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" />
+              Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" /> <LineBreak/>
+              Max offer: <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" /> <LineBreak/>
+              Min offer: <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" /> <LineBreak/>
+              Avail: <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" /> 
+              </TextBlock>
+              
             </StackPanel>
           </ListBoxItem>
         </DataTemplate>

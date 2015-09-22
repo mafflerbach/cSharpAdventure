@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Windows;
 using Api.Item;
@@ -51,15 +52,14 @@ namespace WpfApplication1 {
 
     private void fillListBox(List<ItemList> items, dynamic data) {
       for (var i = 0; i < this.data.results.Count; i++) {
-        var webClient = new WebClient();
-        byte[] imageBytes = webClient.DownloadData(this.data.results[i].img.ToString());
+        
         items.Add(new ItemList {
           Title = this.data.results[i].name.ToString(),
-          Image = imageBytes,
+          Image = "Images/"+this.data.results[i].data_id+".png",
           Rarity = this.data.results[i].rarity.ToString(),
           restriction_level = this.data.results[i].restriction_level.ToString(),
-          max_offer_unit_price = this.data.results[i].max_offer_unit_price.ToString(),
-          min_sale_unit_price = this.data.results[i].min_sale_unit_price.ToString(),
+          max_offer_unit_price = this.formatMoney(this.data.results[i].max_offer_unit_price.ToString()),
+          min_sale_unit_price = this.formatMoney(this.data.results[i].min_sale_unit_price.ToString()),
           sale_availability = this.data.results[i].sale_availability.ToString()
         });
       }
@@ -71,6 +71,30 @@ namespace WpfApplication1 {
 
     private void prev_Click(object sender, RoutedEventArgs e) {
       updateListBox(-1);
+    }
+
+    private string formatMoney(string money) {
+      string mee = this.Reverse(money);
+
+      if (mee.Length > 2)
+      {
+        mee = mee.Insert(2, " ");
+      }
+
+      if (mee.Length > 5)
+      {
+        mee = mee.Insert(5, " ");
+      }
+
+      return this.Reverse(mee);
+
+    }
+
+    private string Reverse(string s)
+    {
+      char[] charArray = s.ToCharArray();
+      Array.Reverse(charArray);
+      return new string(charArray);
     }
 
     private void updateListBox(int calcPage) {
