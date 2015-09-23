@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
 using Api.Item;
 using WpfApplication1.Gw;
@@ -27,8 +25,25 @@ namespace WpfApplication1 {
 
       var items = new List<ItemList>();
       this.fillListBox(items, data);
-
       ListBox.ItemsSource = items;
+    }
+
+    private void ListBox_OnInitialized1(object sender, EventArgs e) {
+      data = getJsonRequest();
+      var pageSum = "";
+
+      var items1 = new List<ItemList>();
+      this.fillListBox(items1, data);
+      ListBox1.ItemsSource = items1;
+    }
+
+    private void ListBox_OnInitialized2(object sender, EventArgs e) {
+      data = getJsonRequest();
+      var pageSum = "";
+
+      var items2 = new List<ItemList>();
+      this.fillListBox(items2, data);
+      ListBox2.ItemsSource = items2;
     }
 
 
@@ -52,10 +67,9 @@ namespace WpfApplication1 {
 
     private void fillListBox(List<ItemList> items, dynamic data) {
       for (var i = 0; i < this.data.results.Count; i++) {
-        
         items.Add(new ItemList {
           Title = this.data.results[i].name.ToString(),
-          Image = "Images/"+this.data.results[i].data_id+".png",
+          Image = "Images/" + this.data.results[i].data_id + ".png",
           Rarity = this.data.results[i].rarity.ToString(),
           restriction_level = this.data.results[i].restriction_level.ToString(),
           max_offer_unit_price = this.formatMoney(this.data.results[i].max_offer_unit_price.ToString()),
@@ -74,29 +88,28 @@ namespace WpfApplication1 {
     }
 
     private string formatMoney(string money) {
-      string mee = this.Reverse(money);
+      var mee = Reverse(money);
 
-      if (mee.Length > 2)
-      {
+      if (mee.Length > 2) {
         mee = mee.Insert(2, " ");
       }
 
-      if (mee.Length > 5)
-      {
+      if (mee.Length > 5) {
         mee = mee.Insert(5, " ");
       }
 
-      return this.Reverse(mee);
-
+      return Reverse(mee);
     }
 
-    private string Reverse(string s)
-    {
-      char[] charArray = s.ToCharArray();
+    private string Reverse(string s) {
+      var charArray = s.ToCharArray();
       Array.Reverse(charArray);
       return new string(charArray);
     }
 
+    /// <summary>
+    /// </summary>
+    /// <param name="calcPage"></param>
     private void updateListBox(int calcPage) {
       var searchTerm = SearchTermTextBox.Text;
       if (searchTerm.Equals("")) {
@@ -113,6 +126,7 @@ namespace WpfApplication1 {
       var items = new List<ItemList>();
       this.fillListBox(items, data);
       ListBox.ItemsSource = items;
+      ListBox.ScrollIntoView(ListBox.Items[0]);
     }
 
 
@@ -129,6 +143,29 @@ namespace WpfApplication1 {
       }
 
       return page;
+    }
+
+
+    private void goTo_Click(object sender, RoutedEventArgs e) {
+
+      var currentPage = Convert.ToInt32(tbCurrentPage.Text);
+      var foo = new Search();
+      foo.page = currentPage;
+      var searchTerm = SearchTermTextBox.Text;
+      if (searchTerm.Equals(""))
+      {
+        searchTerm = "*";
+      }
+      data = foo.Request(searchTerm);
+      tbCurrentPage.Text = currentPage.ToString();
+      TbTotalPage.Text = data.last_page;
+
+      var items = new List<ItemList>();
+      this.fillListBox(items, data);
+      ListBox.ItemsSource = items;
+      ListBox.ScrollIntoView(ListBox.Items[0]);
+
+      Console.WriteLine(tbCurrentPage.Text);
     }
   }
 }

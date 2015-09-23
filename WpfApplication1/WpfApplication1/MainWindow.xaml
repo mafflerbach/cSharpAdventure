@@ -5,30 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="522" Width="834">
+        Title="MainWindow" Height="697" Width="959">
   <Grid Margin="0,10,0,0">
-
-    <ListBox Name="ListBox" Initialized="ListBox_OnInitialized" Loaded="ListBox_OnLoaded" Margin="0,40,0,35">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="5" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <ListBox Name="ListBox" Initialized="ListBox_OnInitialized" Loaded="ListBox_OnLoaded" Margin="0,40,0,35" >
       <ListBox.ItemTemplate>
         <DataTemplate>
           <ListBoxItem>
             <StackPanel Orientation="Horizontal">
               <Image Source="{Binding Image}" Width="100" />
               <TextBlock>
-              <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
-              <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
-              Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" /> <LineBreak/>
-              Max offer: <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" /> <LineBreak/>
-              Min offer: <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" /> <LineBreak/>
-              Avail: <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" /> 
+                <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
+                Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" />
+                <LineBreak />
+                Max offer: <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" /> <LineBreak />
+                Min offer: <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" /> <LineBreak />
+                Avail: <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" />
               </TextBlock>
-              
+
             </StackPanel>
           </ListBoxItem>
         </DataTemplate>
       </ListBox.ItemTemplate>
-
     </ListBox>
+
     <TextBox Width="180" VerticalAlignment="top" HorizontalAlignment="Left" x:Name="SearchTermTextBox"
              Margin="10,8,0,0" Height="20" />
     <TextBlock IsHitTestVisible="False" Text="Enter Search Term Here" VerticalAlignment="Top"
@@ -50,12 +55,67 @@
             VerticalAlignment="Bottom" Width="75" Click="next_Click" />
     <Button x:Name="prev" Content="Preview Page" HorizontalAlignment="Left" Margin="10,0,0,8"
             VerticalAlignment="Bottom" Width="95" Click="prev_Click" />
-
-    <TextBlock Height="21" Margin="0,0,103,5" HorizontalAlignment="Right" Name="tbCurrentPage" Text=""
-               VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Width="25" />
-    <TextBlock Height="21" HorizontalAlignment="Right" Margin="0,0,73,5" Name="textBlock3"
+    <Button x:Name="goTo" Click="goTo_Click" Content="Go To" HorizontalAlignment="right"  Margin="0,0,135,8" VerticalAlignment="Bottom" Width="40"/>
+    <TextBox Height="21" Margin="0,0,103,8" HorizontalAlignment="Right" Name="tbCurrentPage" Text=""
+               VerticalAlignment="Bottom"  Width="25" />
+    <TextBlock Height="21" HorizontalAlignment="Right" Margin="0,0,73,8" Name="textBlock3"
                VerticalAlignment="Bottom" Width="20" Text="/" />
-    <TextBlock Height="21" HorizontalAlignment="Right" Margin="0,0,48,5" Name="TbTotalPage" Text=""
+    <TextBlock Height="21" HorizontalAlignment="Right" Margin="0,0,48,8" Name="TbTotalPage" Text=""
                VerticalAlignment="Bottom" Width="28" />
+    <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+
+
+
+    <Grid Grid.Column="2">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <ListBox Name="ListBox1" Initialized="ListBox_OnInitialized1" Margin="0,40,0,35">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <ListBoxItem>
+              <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Image}" Width="100" />
+                <TextBlock>
+                <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
+                Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" />
+                <LineBreak />
+                Max offer: <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" /> <LineBreak />
+                Min offer: <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" /> <LineBreak />
+                Avail: <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" />
+              </TextBlock>
+
+              </StackPanel>
+            </ListBoxItem>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+      <GridSplitter  Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
+      <ListBox Name="ListBox2"  Grid.Row="2" Initialized="ListBox_OnInitialized2" Margin="0,40,0,35">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <ListBoxItem>
+              <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Image}" Width="100" />
+                <TextBlock>
+                <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
+                Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" />
+                <LineBreak />
+                Max offer: <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" /> <LineBreak />
+                Min offer: <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" /> <LineBreak />
+                Avail: <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" />
+              </TextBlock>
+
+              </StackPanel>
+            </ListBoxItem>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Grid>
+
   </Grid>
 </Window>
