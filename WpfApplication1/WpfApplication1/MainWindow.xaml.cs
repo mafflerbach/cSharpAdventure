@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mime;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media.Imaging;
 using Api.Item;
 using WpfApplication1.Gw;
+using System.Net;
+using System.IO;
 
 namespace WpfApplication1 {
   /// <summary>
@@ -14,6 +20,8 @@ namespace WpfApplication1 {
     private int page = 1;
 
     public MainWindow() {
+      CachedImage.FileCache.AppCacheDirectory = string.Format("{0}\\Images2\\",
+                              Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
       InitializeComponent();
       tbCurrentPage.Text = "1";
       TbTotalPage.Text = "0";
@@ -64,17 +72,25 @@ namespace WpfApplication1 {
 
       return data;
     }
+    
 
     private void fillListBox(List<ItemList> items, dynamic data) {
+
+
+
       for (var i = 0; i < this.data.results.Count; i++) {
+        var image = new CachedImage.Image();
+        image.ImageUrl = this.data.results[i].img;
+
         items.Add(new ItemList {
           Title = this.data.results[i].name.ToString(),
-          Image = "Images/" + this.data.results[i].data_id + ".png",
+          Image = image.ImageUrl,
           Rarity = this.data.results[i].rarity.ToString(),
           restriction_level = this.data.results[i].restriction_level.ToString(),
           max_offer_unit_price = this.formatMoney(this.data.results[i].max_offer_unit_price.ToString()),
           min_sale_unit_price = this.formatMoney(this.data.results[i].min_sale_unit_price.ToString()),
-          sale_availability = this.data.results[i].sale_availability.ToString()
+          sale_availability = this.data.results[i].sale_availability.ToString(),
+          data_id = this.data.results[i].data_id.ToString()
         });
       }
     }
@@ -168,4 +184,6 @@ namespace WpfApplication1 {
       Console.WriteLine(tbCurrentPage.Text);
     }
   }
+
+  
 }

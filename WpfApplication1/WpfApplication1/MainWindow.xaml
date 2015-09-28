@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
         Title="MainWindow" Height="697" Width="959">
@@ -17,8 +18,10 @@
         <DataTemplate>
           <ListBoxItem>
             <StackPanel Orientation="Horizontal">
-              <Image Source="{Binding Image}" Width="100" />
+              <cachedImage:Image ImageUrl="{Binding Image}"></cachedImage:Image>
+              
               <TextBlock>
+                <TextBlock VerticalAlignment="Center" Text="{Binding data_id}" />
                 <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
                 <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
                 Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" />
