@@ -18,7 +18,8 @@
         <DataTemplate>
           <ListBoxItem>
             <StackPanel Orientation="Horizontal">
-              <cachedImage:Image ImageUrl="{Binding Image}"></cachedImage:Image>
+
+              <cachedImage:Image ImageUrl="{Binding Image}" Width="64"></cachedImage:Image>
               
               <TextBlock>
                 <TextBlock VerticalAlignment="Center" Text="{Binding data_id}" />

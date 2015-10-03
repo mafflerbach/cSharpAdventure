@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media.Imaging;
 
 namespace WpfApplication1.Gw {
-  internal class ItemList {
+  public class ItemList {
     public string max_offer_unit_price { get; set; }
     public string min_sale_unit_price { get; set; }
     public string restriction_level { get; set; }
