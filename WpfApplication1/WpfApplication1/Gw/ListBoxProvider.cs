@@ -30,7 +30,10 @@ namespace WpfApplication1.Gw {
         });
       }
     }
-    
+
+
+
+
     private string formatMoney(string money) {
       var mee = Reverse(money);
 

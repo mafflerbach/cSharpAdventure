@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 
-namespace Api {
+namespace Api.gw2spidy {
   internal abstract class Service : WpfApplication1.Gw.Api {
     public string baseUrl = "http://www.gw2spidy.com/api";
 

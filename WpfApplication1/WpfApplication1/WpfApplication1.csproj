@@ -256,8 +256,14 @@
       <DependentUpon>ConfigurationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gw\Api.cs" />
+    <Compile Include="Gw\Api\gw2\Service.cs" />
+    <Compile Include="Gw\Api\Item\List.cs" />
     <Compile Include="Gw\Api\Item\Search.cs" />
-    <Compile Include="Gw\Api\Service.cs" />
+    <Compile Include="Gw\Api\gw2spidy\Service.cs" />
+    <Compile Include="Gw\Api\Transactions\current\Buys.cs" />
+    <Compile Include="Gw\Api\Transactions\current\Sells.cs" />
+    <Compile Include="Gw\Api\Transactions\history\Buys.cs" />
+    <Compile Include="Gw\Api\Transactions\history\Sells.cs" />
     <Compile Include="Gw\ItemList.cs" />
     <Compile Include="Gw\ListBoxProvider.cs" />
     <Page Include="ConfigurationWindow.xaml">

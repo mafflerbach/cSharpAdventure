@@ -99,7 +99,7 @@
             <DataTemplate>
               <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                  <Image Source="{Binding Image}" Width="100" />
+                  <Image Source="{Binding Image}" Width="64" />
                   <TextBlock>
                 <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
                 <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
@@ -121,7 +121,7 @@
             <DataTemplate>
               <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                  <Image Source="{Binding Image}" Width="100" />
+                  <Image Source="{Binding Image}" Width="64" />
                   <TextBlock>
                 <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
                 <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />

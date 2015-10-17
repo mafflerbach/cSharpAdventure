@@ -1,4 +1,5 @@
 ﻿using System;
+using Api.gw2spidy;
 
 namespace Api.Item {
   internal class Search : Service {
@@ -8,7 +9,6 @@ namespace Api.Item {
     public dynamic Request(string querry) {
       var url = requestBaseUrl() + "item-search/" + querry + "/" + page;
 
-      Console.WriteLine(url);
       return base.Request(url);
     }
   }

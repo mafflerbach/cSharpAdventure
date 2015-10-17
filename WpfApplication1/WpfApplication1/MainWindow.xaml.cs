@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
+using System.ComponentModel;
 using System.Windows;
 using Api.Item;
+using Api.Transactions.current;
+using Api.Transactions.history;
 using WpfApplication1.Gw;
 
 
@@ -34,25 +36,32 @@ namespace WpfApplication1 {
     }
 
     private void ListBox_OnInitialized1(object sender, EventArgs e) {
-      data = getSearchResult(1);
       var pageSum = "";
 
+      var test = new Api.Transactions.current.Sells();
+      data = test.Request();
+      
       var items1 = new List<ItemList>();
       ListBoxProvider provider = new ListBoxProvider(items1, data);
+
       provider.fillListBox();
 
-      ListBox1.ItemsSource = items1;
+      ListBox1.ItemsSource = items1; 
+      
     }
 
     private void ListBox_OnInitialized2(object sender, EventArgs e) {
-      data = getSearchResult(1);
       var pageSum = "";
 
-      var items2 = new List<ItemList>();
-      ListBoxProvider provider = new ListBoxProvider(items2, data);
+      var test = new Api.Transactions.history.Sells();
+      data = test.Request();
+
+      var items1 = new List<ItemList>();
+      ListBoxProvider provider = new ListBoxProvider(items1, data);
+
       provider.fillListBox();
 
-      ListBox2.ItemsSource = items2;
+      ListBox2.ItemsSource = items1;
     }
 
 

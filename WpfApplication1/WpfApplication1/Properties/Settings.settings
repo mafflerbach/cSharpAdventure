@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="API_KEY" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">FAEA494A-64E3-BC48-9670-BED4B4F86772DC5B5FBB-236A-47F3-8A79-9A65F78F1978</Value>
     </Setting>
   </Settings>
 </SettingsFile>

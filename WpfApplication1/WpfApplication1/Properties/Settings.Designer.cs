@@ -25,7 +25,7 @@ namespace WpfApplication1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("FAEA494A-64E3-BC48-9670-BED4B4F86772DC5B5FBB-236A-47F3-8A79-9A65F78F1978")]
         public string API_KEY {
             get {
                 return ((string)(this["API_KEY"]));
