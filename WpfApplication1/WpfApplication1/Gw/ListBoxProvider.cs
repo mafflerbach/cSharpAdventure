@@ -26,6 +26,7 @@ namespace WpfApplication1.Gw {
           max_offer_unit_price = this.formatMoney(this.data.results[i].max_offer_unit_price.ToString()),
           min_sale_unit_price = this.formatMoney(this.data.results[i].min_sale_unit_price.ToString()),
           sale_availability = this.data.results[i].sale_availability.ToString(),
+          offer_availability = this.data.results[i].offer_availability.ToString(),
           data_id = this.data.results[i].data_id.ToString()
         });
       }

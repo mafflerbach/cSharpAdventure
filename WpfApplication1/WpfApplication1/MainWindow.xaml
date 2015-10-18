@@ -6,7 +6,7 @@
         xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="697" Width="959">
+        Title="MainWindow" Height="1007" Width="949">
 
   <Grid >
     <Grid.RowDefinitions>
@@ -44,9 +44,10 @@
                 <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
                 Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" />
                 <LineBreak />
-                Max offer: <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" /> <LineBreak />
-                Min offer: <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" /> <LineBreak />
+                Buy Price: <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" /> <LineBreak />
+                Sell Price: <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" /> <LineBreak />
                 Avail: <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" />
+                Demand: <TextBlock VerticalAlignment="Center" Text="{Binding offer_availability}" />
               </TextBlock>
 
               </StackPanel>
@@ -94,7 +95,7 @@
           <RowDefinition Height="5" />
           <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ListBox Name="ListBox1" Initialized="ListBox_OnInitialized1" Margin="0,40,0,35">
+        <!--   <ListBox Name="ListBox1" Initialized="ListBox_OnInitialized1" Margin="0,40,0,35">
           <ListBox.ItemTemplate>
             <DataTemplate>
               <ListBoxItem>
@@ -114,15 +115,19 @@
               </ListBoxItem>
             </DataTemplate>
           </ListBox.ItemTemplate>
-        </ListBox>
+        </ListBox> -->
         <GridSplitter  Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
-        <ListBox Name="ListBox2"  Grid.Row="2" Initialized="ListBox_OnInitialized2" Margin="0,40,0,35">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-              <ListBoxItem>
-                <StackPanel Orientation="Horizontal">
-                  <Image Source="{Binding Image}" Width="64" />
-                  <TextBlock>
+
+        <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" Margin="0,5,0,0">
+          <TabItem Header="History Sells" HorizontalAlignment="Stretch">
+            <Grid Margin="0,0,0,-2" HorizontalAlignment="Stretch">
+              <ListBox Name="ListBox2" Initialized="ListBox_OnInitialized2" Margin="0,0,0,35">
+                <ListBox.ItemTemplate>
+                  <DataTemplate>
+                    <ListBoxItem>
+                      <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Image}" Width="64" />
+                        <TextBlock>
                 <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
                 <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
                 Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" />
@@ -132,11 +137,42 @@
                 Avail: <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" />
               </TextBlock>
 
-                </StackPanel>
-              </ListBoxItem>
-            </DataTemplate>
-          </ListBox.ItemTemplate>
-        </ListBox>
+                      </StackPanel>
+                    </ListBoxItem>
+                  </DataTemplate>
+                </ListBox.ItemTemplate>
+              </ListBox>
+            </Grid>
+
+          </TabItem>
+          <TabItem Header="Current Sells">
+            <Grid Background="#FFE5E5E5">
+              <ListBox Name="ListBox1" Initialized="ListBox_OnInitialized1" Margin="0,0,0,35">
+                <ListBox.ItemTemplate>
+                  <DataTemplate>
+                    <ListBoxItem>
+                      <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Image}" Width="64" />
+                        <TextBlock>
+                <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding Rarity}" />
+                Required Level: <TextBlock VerticalAlignment="Center" Text="{Binding restriction_level}" />
+                <LineBreak />
+                Max offer: <TextBlock VerticalAlignment="Center" Text="{Binding max_offer_unit_price}" /> <LineBreak />
+                Min offer: <TextBlock VerticalAlignment="Center" Text="{Binding min_sale_unit_price}" /> <LineBreak />
+                Avail: <TextBlock VerticalAlignment="Center" Text="{Binding sale_availability}" />
+              </TextBlock>
+
+                      </StackPanel>
+                    </ListBoxItem>
+                  </DataTemplate>
+                </ListBox.ItemTemplate>
+              </ListBox>
+
+
+            </Grid>
+          </TabItem>
+        </TabControl>
       </Grid>
 
     </Grid>

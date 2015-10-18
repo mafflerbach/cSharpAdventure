@@ -12,6 +12,7 @@ namespace Api.Transactions.history {
     public dynamic Request() {
       var url = requestBaseUrl() + "commerce/transactions/history/sells";
       var request = base.Request(url);
+      Console.WriteLine(request);
 
       var ids = this.seperateIds(request);
 
